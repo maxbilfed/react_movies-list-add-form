@@ -21,7 +21,12 @@ export const NewMovie = ({ onAdd }: Props) => {
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
 
   function updateDisableSubmitState() {
-    if (titleText && imgUrlText && imdbIdText && imdbUrlText) {
+    if (
+      titleText.trim() &&
+      imgUrlText.trim() &&
+      imdbIdText.trim() &&
+      imdbUrlText.trim()
+    ) {
       setIsSubmitDisabled(false);
     } else {
       setIsSubmitDisabled(true);
@@ -30,8 +35,6 @@ export const NewMovie = ({ onAdd }: Props) => {
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-
-    updateDisableSubmitState();
 
     if (isSubmitDisabled) {
       return;
